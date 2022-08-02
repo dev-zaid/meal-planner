@@ -42,3 +42,7 @@ const food = {
 export const userSchema = new ObjectSchema(user);
 export const mealSchema = new ObjectSchema(meal);
 export const foodSchema = new ObjectSchema(food);
+
+export type User = InferType<typeof userSchema>;
+export type Meal = InferType<typeof mealSchema>;
+export type Food = InferType<typeof foodSchema>;
