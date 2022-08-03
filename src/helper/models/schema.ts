@@ -28,7 +28,7 @@ const food = {
 const meal = {
   category: mixed<mealCategory>().oneOf(Object.values(mealCategory)).required('Category of meal is required'),
   name: string().required('Name of meal is mandatory'),
-  foodItems: array().of(string().required('Food items is missing')).required(), //Array of food item names
+  foodItems: array().of(string().required('Food items is missing')).required(), //Array of ID of food item
 };
 
 const user = {
@@ -38,9 +38,9 @@ const user = {
     .of(
       object().shape({
         date: date().required('Date is required'),
-        mealsReference: string().required('Meal name is required'),
+        mealsReference: array().of(string().required('Meal ID is required')).required('Meals reference is required'),
       }),
-    ) //mealsReference refernces to the name of the meal in the meal collection
+    ) //mealsReference refernces to the ID of the meal in the meal collection
     .required('Meal plan is mandatory'),
 };
 
